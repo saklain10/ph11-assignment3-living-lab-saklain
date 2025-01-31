@@ -21,6 +21,23 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    keyframes: {
+                        backgroundFade: {
+                            '0%, 100%': { background: 'rgba(239, 235, 227, 0.1)' },
+                            '50%': { background: 'rgba(23, 152, 0, 0.2)' }
+                        },
+                        float: {
+                            '0%': { transform: 'translateX(0px)' },
+                            '25%': { transform: 'translateX(-30px)' },
+                            '50%': { transform: 'translateX(0px)' },
+                            '75%': { transform: 'translateX(30px)' },
+                            '100%': { transform: 'translateX(0px)' }
+                        }
+                    },
+                    animation: {
+                        backgroundFade: "backgroundFade 6s linear infinite",
+                        float: "float 4s ease-in-out infinite"
+                    },
                     colors: {
                         clifford: '#da373d',
                         "green-c": "#179800",
@@ -29,8 +46,8 @@
                     fontFamily: {
                         sora: ["Sora", "serif"]
                     },
-                },
-            },
+                }
+            }
         };
     </script>
 </head>
@@ -39,7 +56,7 @@
     <header>
         <div
             class="w-full bg-gradient-to-t from-[rgba(239,235,227,1)] via-[rgba(250, 250, 250, 1)] to-[rgba(255,255,255,1)]">
-            <div class="w-11/12 mx-auto border-blue-500">
+            <div class="w-11/12 mx-auto">
                 <!-- desktop navbar -->
                 <div class="my-4">
                     <div class="hidden lg:flex justify-between items-center">
@@ -55,12 +72,16 @@
                         </div>
                         <div class="flex items-center gap-6">
                             <div class="flex gap-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                                  </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-                                  </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-7">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-7">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                                </svg>
                             </div>
                             <div class="flex gap-6">
                                 <button class="btn btn-outline border-green-c">Login</button>
@@ -82,22 +103,62 @@
                             </svg>
                         </div>
                     </div>
-
                 </div>
             </div>
 
             <!-- Hero Banner -->
-             <section class="flex flex-col items-center justify-center mt-10 gap-4">
-                <h1 class="text-4xl font-semibold text-center px-10">Freshness <span class="text-green-c">You Can <br class="lg:block hidden"> Count On,</span> Prices You’ll Love!</h1>
-                <p class="text-center px-10">Shop your daily essentials at unbeatable prices. From fresh produce to pantry <br class="lg:block hidden">staples, we’ve got you covered every day!</p>
-                <img class="w-[550px] h-auto" src="./c2-assets/hero-vegetables.png" alt="">
-             </section>
+            <section class="flex flex-col items-center justify-center mt-10 gap-4">
+                <h1 class="text-4xl font-semibold text-center px-10 ">Freshness <span class="text-green-c">You Can <br
+                            class="lg:block hidden"> Count On,</span> Prices You’ll Love!</h1>
+                <p class="text-center px-10 ">Shop your daily essentials at unbeatable prices. From fresh produce to
+                    pantry <br class="lg:block hidden">staples, we’ve got you covered every day!</p>
+                <!-- mx-2 animate-backgroundFade rounded-xl p-4 -->
+                <img class="w-[550px] h-auto animate-float" src="./c2-assets/hero-vegetables.png" alt="">
+            </section>
+
     </header>
-
-    <main>
-        <div class="h-72 w-auto bg-black">
-
-        </div>
+    <main class="w-11/12 mx-auto mt-20">
+        <section class="mb-8">
+            <h2 class="text-green-c text-xl font-semibold text-center mb-8">Services</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="card bg-base-100 bg-cb">
+                    <figure class="px-10 pt-10">
+                      <img
+                        src="./c2-assets/service.png"
+                        alt=""
+                        class="rounded-full bg-white p-5"/>
+                    </figure>
+                    <div class="card-body items-center text-center">
+                      <h2 class="card-title">24/7 Services </h2>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                    </div>
+                  </div>
+                <div class="card bg-base-100 bg-cb">
+                    <figure class="px-10 pt-10">
+                      <img
+                        src="./c2-assets/delivery.png"
+                        alt=""
+                        class="rounded-full bg-white p-5"/>
+                    </figure>
+                    <div class="card-body items-center text-center">
+                      <h2 class="card-title">Fast Delivery</h2>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                    </div>
+                  </div>
+                <div class="card bg-base-100 bg-cb">
+                    <figure class="px-10 pt-10">
+                      <img
+                        src="./c2-assets/healthy.png"
+                        alt=""
+                        class="rounded-full bg-white p-5"/>
+                    </figure>
+                    <div class="card-body items-center text-center">
+                      <h2 class="card-title">Healthy Products </h2>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                    </div>
+                  </div>
+            </div>
+        </section>
     </main>
 
     <footer>
